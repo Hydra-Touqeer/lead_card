@@ -38,7 +38,9 @@ import { MOCK_ACTIVITY_GROUPS, MOCK_CONTACTS, MOCK_STATUS_BADGES, MOCK_TAGS, MOC
       </div>
 
       <div class="side-column">
-        <app-lead-actions-toolbar />
+        <div class="toolbar-overlay">
+          <app-lead-actions-toolbar />
+        </div>
         <app-task-panel [tasks]="tasks" [(collapsed)]="panelCollapsed" />
       </div>
     </div>

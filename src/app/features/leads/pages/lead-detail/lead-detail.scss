@@ -13,13 +13,8 @@
   display: flex;
   flex-direction: column;
   gap: var(--spacing-24);
-  flex: 1 0 0;
-  max-width: 880px;
-  transition: max-width 0.2s ease;
-}
-
-.lead-detail.panel-collapsed .main-column {
-  max-width: none;
+  flex: 1 1 0;
+  min-width: 0;
 }
 
 .middle-card {
@@ -39,8 +34,15 @@
 }
 
 .side-column {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-24);
+  position: relative;
   flex-shrink: 0;
+  // Reserves vertical space for the absolutely-positioned toolbar above,
+  // so the task panel still starts level with the middle card on the left.
+  padding-top: 56px;
+}
+
+.toolbar-overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
 }

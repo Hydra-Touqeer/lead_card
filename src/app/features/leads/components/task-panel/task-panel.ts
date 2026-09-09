@@ -36,25 +36,23 @@ type RailTab = 'tasks' | 'files' | 'log';
           <app-icon [icon]="collapsed() ? expandIcon : collapseIcon" [size]="21" />
         </button>
 
-        @if (!collapsed()) {
-          <nav class="rail-tabs">
-            <button
-              type="button"
-              class="rail-tab"
-              [class.active]="activeTab() === 'tasks'"
-              aria-label="Tasks"
-              (click)="activeTab.set('tasks')"
-            >
-              <app-icon [icon]="tasksIcon" [size]="16" />
-            </button>
-            <button type="button" class="rail-tab" disabled aria-label="Files">
-              <app-icon [icon]="filesIcon" [size]="16" />
-            </button>
-            <button type="button" class="rail-tab" disabled aria-label="Log">
-              <app-icon [icon]="logIcon" [size]="16" />
-            </button>
-          </nav>
-        }
+        <nav class="rail-tabs">
+          <button
+            type="button"
+            class="rail-tab"
+            [class.active]="activeTab() === 'tasks'"
+            aria-label="Tasks"
+            (click)="activeTab.set('tasks')"
+          >
+            <app-icon [icon]="tasksIcon" [size]="16" />
+          </button>
+          <button type="button" class="rail-tab" disabled aria-label="Files">
+            <app-icon [icon]="filesIcon" [size]="16" />
+          </button>
+          <button type="button" class="rail-tab" disabled aria-label="Log">
+            <app-icon [icon]="logIcon" [size]="16" />
+          </button>
+        </nav>
       </div>
 
       @if (!collapsed()) {
