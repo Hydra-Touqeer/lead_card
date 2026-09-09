@@ -1,0 +1,181 @@
+// Product semantic color tokens (bg-*, fg-*, border-*, text-*), sourced directly
+// from the Figma design-system's variables. Independent of PrimeNG's own --p-*
+// tokens; used for custom (non-PrimeNG) backgrounds, foregrounds, borders and text.
+// Both blocks share the same variable names on purpose - toggling the
+// `app-dark` class on <html> is all that's needed to switch modes.
+
+:root {
+  --bg-primary: #ffffff;
+  --bg-primary-alt: #ffffff;
+  --bg-primary-hover: #f8fafc;
+  --bg-primary-solid: #020617;
+  --bg-secondary: #f8fafc;
+  --bg-secondary-alt: #f8fafc;
+  --bg-secondary-hover: #f1f5f9;
+  --bg-secondary-solid: #475569;
+  --bg-tertiary: #f1f5f9;
+  --bg-quaternary: #e2e8f0;
+  --bg-active: #f8fafc;
+  --bg-disabled: #f1f5f9;
+  --bg-disabled-subtle: #f8fafc;
+  --bg-overlay: #020617;
+  --bg-brand-primary: #e6f0fe;
+  --bg-brand-primary-alt: #e6f0fe;
+  --bg-brand-secondary: #b0d0fd;
+  --bg-brand-solid: #0166f8;
+  --bg-brand-solid-hover: #0148b0;
+  --bg-brand-section: #013888;
+  --bg-brand-section-subtle: #0148b0;
+  --bg-error-primary: #fef2f2;
+  --bg-error-secondary: #fee2e2;
+  --bg-error-solid: #dc2626;
+  --bg-warning-primary: #fff7ed;
+  --bg-warning-secondary: #ffedd5;
+  --bg-warning-solid: #ea580c;
+  --bg-success-primary: #f0fdf4;
+  --bg-success-secondary: #dcfce7;
+  --bg-success-solid: #16a34a;
+
+  --fg-primary: #0f172a;
+  --fg-secondary: #334155;
+  --fg-secondary-hover: #1e293b;
+  --fg-tertiary: #475569;
+  --fg-tertiary-hover: #334155;
+  --fg-quaternary: #64748b;
+  --fg-quaternary-hover: #475569;
+  --fg-quinary: #94a3b8;
+  --fg-quinary-hover: #64748b;
+  --fg-senary: #cbd5e1;
+  --fg-white: #ffffff;
+  --fg-disabled: #94a3b8;
+  --fg-disabled-subtle: #cbd5e1;
+  --fg-brand-primary: #015de2;
+  --fg-brand-primary-alt: #015de2;
+  --fg-brand-secondary: #0166f8;
+  --fg-error-primary: #dc2626;
+  --fg-error-secondary: #ef4444;
+  --fg-warning-primary: #ea580c;
+  --fg-warning-secondary: #f97316;
+  --fg-success-primary: #16a34a;
+  --fg-success-secondary: #22c55e;
+
+  --border-primary: #cbd5e1;
+  --border-secondary: #e2e8f0;
+  --border-tertiary: #f1f5f9;
+  --border-disabled: #cbd5e1;
+  --border-disabled-subtle: #e2e8f0;
+  --border-brand: #0166f8;
+  --border-brand-alt: #015de2;
+  --border-error: #ef4444;
+  --border-error-subtle: #fca5a5;
+
+  --text-primary: #0f172a;
+  --text-primary-on-brand: #ffffff;
+  --text-secondary: #334155;
+  --text-secondary-hover: #1e293b;
+  --text-secondary-on-brand: #8ab9fc;
+  --text-tertiary: #475569;
+  --text-tertiary-hover: #334155;
+  --text-tertiary-on-brand: #8ab9fc;
+  --text-quaternary: #64748b;
+  --text-quaternary-on-brand: #5598fa;
+  --text-white: #ffffff;
+  --text-disabled: #64748b;
+  --text-placeholder: #64748b;
+  --text-placeholder-subtle: #cbd5e1;
+  --text-brand-primary: #002b68;
+  --text-brand-secondary: #0148b0;
+  --text-brand-tertiary: #015de2;
+  --text-brand-tertiary-alt: #015de2;
+  --text-error-primary: #dc2626;
+  --text-warning-primary: #ea580c;
+  --text-success-primary: #16a34a;
+}
+
+:root.app-dark {
+  --bg-primary: #09090b;
+  --bg-primary-alt: #18181b;
+  --bg-primary-hover: #27272a;
+  --bg-primary-solid: #18181b;
+  --bg-secondary: #18181b;
+  --bg-secondary-alt: #09090b;
+  --bg-secondary-hover: #27272a;
+  --bg-secondary-solid: #52525b;
+  --bg-tertiary: #27272a;
+  --bg-quaternary: #3f3f46;
+  --bg-active: #27272a;
+  --bg-disabled: #27272a;
+  --bg-disabled-subtle: #18181b;
+  --bg-overlay: #27272a;
+  --bg-brand-primary: #3485f9;
+  --bg-brand-primary-alt: #18181b;
+  --bg-brand-secondary: #015de2;
+  --bg-brand-solid: #015de2;
+  --bg-brand-solid-hover: #3485f9;
+  --bg-brand-section: #18181b;
+  --bg-brand-section-subtle: #09090b;
+  --bg-error-primary: #ef4444;
+  --bg-error-secondary: #d92d20;
+  --bg-error-solid: #d92d20;
+  --bg-warning-primary: #f97316;
+  --bg-warning-secondary: #ea580c;
+  --bg-warning-solid: #ea580c;
+  --bg-success-primary: #22c55e;
+  --bg-success-secondary: #16a34a;
+  --bg-success-solid: #16a34a;
+
+  --fg-primary: #ffffff;
+  --fg-secondary: #d4d4d8;
+  --fg-secondary-hover: #e4e4e7;
+  --fg-tertiary: #a1a1aa;
+  --fg-tertiary-hover: #d4d4d8;
+  --fg-quaternary: #a1a1aa;
+  --fg-quaternary-hover: #d4d4d8;
+  --fg-quinary: #71717a;
+  --fg-quinary-hover: #a1a1aa;
+  --fg-senary: #52525b;
+  --fg-white: #ffffff;
+  --fg-disabled: #71717a;
+  --fg-disabled-subtle: #52525b;
+  --fg-brand-primary: #3485f9;
+  --fg-brand-primary-alt: #5598fa;
+  --fg-brand-secondary: #3485f9;
+  --fg-error-primary: #ef4444;
+  --fg-error-secondary: #f87171;
+  --fg-warning-primary: #f97316;
+  --fg-warning-secondary: #fb923c;
+  --fg-success-primary: #22c55e;
+  --fg-success-secondary: #47cd89;
+
+  --border-primary: #3f3f46;
+  --border-secondary: #27272a;
+  --border-tertiary: #27272a;
+  --border-disabled: #3f3f46;
+  --border-disabled-subtle: #27272a;
+  --border-brand: #3485f9;
+  --border-brand-alt: #3f3f46;
+  --border-error: #f87171;
+  --border-error-subtle: #f87171;
+
+  --text-primary: #fafafa;
+  --text-primary-on-brand: #fafafa;
+  --text-secondary: #d4d4d8;
+  --text-secondary-hover: #e4e4e7;
+  --text-secondary-on-brand: #d4d4d8;
+  --text-tertiary: #a1a1aa;
+  --text-tertiary-hover: #d4d4d8;
+  --text-tertiary-on-brand: #a1a1aa;
+  --text-quaternary: #a1a1aa;
+  --text-quaternary-on-brand: #a1a1aa;
+  --text-white: #ffffff;
+  --text-disabled: #71717a;
+  --text-placeholder: #71717a;
+  --text-placeholder-subtle: #373a41;
+  --text-brand-primary: #fafafa;
+  --text-brand-secondary: #d4d4d8;
+  --text-brand-tertiary: #94979c;
+  --text-brand-tertiary-alt: #fafafa;
+  --text-error-primary: #f87171;
+  --text-warning-primary: #fb923c;
+  --text-success-primary: #4ade80;
+}

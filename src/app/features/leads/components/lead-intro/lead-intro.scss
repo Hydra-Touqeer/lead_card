@@ -1,0 +1,153 @@
+:host {
+  display: block;
+}
+
+.lead-intro {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-20);
+}
+
+.status-row {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-8);
+  flex-wrap: wrap;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.segment {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-4);
+  font-size: 0.75rem;
+  line-height: 1rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  white-space: nowrap;
+}
+
+.segment-detail {
+  color: var(--text-tertiary);
+  font-weight: 400;
+}
+
+.company-row {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-12);
+  flex-wrap: wrap;
+}
+
+.company-identity {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-12);
+  min-width: 0;
+}
+
+.company-logo {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 1px solid var(--border-primary);
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.company-name-block {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.company-name {
+  margin: 0;
+  font-size: 1.875rem;
+  font-weight: 600;
+  line-height: 2.25rem;
+  color: var(--text-primary);
+}
+
+.company-domain {
+  margin: 0;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 500;
+  color: var(--text-tertiary);
+}
+
+.tags-row {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-12);
+  flex-wrap: wrap;
+}
+
+.contacts-row {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-8);
+  flex-wrap: wrap;
+}
+
+.contact-pill {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-8);
+  padding: var(--spacing-4) var(--spacing-16) var(--spacing-4) var(--spacing-6);
+  border: 1px solid var(--border-secondary);
+  border-radius: 9999px;
+}
+
+.contact-avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--bg-quaternary);
+  color: var(--text-secondary);
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.contact-text {
+  display: flex;
+  flex-direction: column;
+  white-space: nowrap;
+}
+
+.contact-name {
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.5rem;
+  color: var(--text-primary);
+}
+
+.contact-role {
+  font-size: 0.75rem;
+  line-height: 1rem;
+  font-weight: 400;
+  color: var(--text-tertiary);
+}
+
+.contacts-more {
+  display: flex;
+  align-items: center;
+  padding: var(--spacing-8) var(--spacing-12);
+  border: 1px solid var(--border-secondary);
+  border-radius: var(--radius-md);
+  background: none;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  cursor: pointer;
+}

@@ -1,0 +1,59 @@
+:host {
+  display: block;
+  width: 100%;
+}
+
+.task-card {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  width: 100%;
+  padding: var(--spacing-12) var(--spacing-14) var(--spacing-12) var(--spacing-12);
+  border: 1px solid var(--border-secondary);
+  border-radius: var(--radius-lg);
+  background: var(--bg-primary);
+}
+
+.task-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-14);
+  flex: 1 0 0;
+  min-width: 0;
+}
+
+.title-row {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-6);
+  flex-wrap: wrap;
+}
+
+.title {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.due-date {
+  margin: 0;
+  font-size: 1rem;
+  color: var(--text-secondary);
+
+  &.overdue {
+    color: var(--text-warning-primary);
+  }
+}
+
+.divider {
+  height: 1px;
+  width: 100%;
+  background: var(--border-secondary);
+}
+
+.meta-row {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-12);
+  flex-wrap: wrap;
+}

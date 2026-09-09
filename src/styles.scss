@@ -1,1 +1,18 @@
-/* You can add global styles to this file, and also import other style files */
+@use 'primeicons/primeicons.css';
+@use './theme/tokens/spacing';
+@use './theme/tokens/semantic-tokens';
+
+// The Figma design system's spacing/typography values assume a 14px root
+// font-size (1rem = 14px), not the browser default of 16px. Using a
+// percentage (rather than a fixed 14px) keeps this relative to the user's
+// own browser/accessibility font-size setting.
+html {
+  font-size: 87.5%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}

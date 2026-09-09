@@ -1,0 +1,35 @@
+:host {
+  display: block;
+}
+
+.lead-tabs {
+  display: flex;
+  align-items: flex-end;
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-secondary);
+}
+
+.tab {
+  padding: var(--spacing-16) var(--spacing-16) var(--spacing-16);
+  border: none;
+  border-bottom: 2px solid transparent;
+  background: none;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-quaternary);
+  cursor: pointer;
+
+  &:hover:not(:disabled) {
+    color: var(--text-secondary);
+  }
+
+  &.active {
+    color: var(--fg-brand-primary);
+    border-bottom-color: var(--border-brand);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+}
