@@ -1,0 +1,139 @@
+:host {
+  display: contents;
+}
+
+.comment-trigger {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px;
+  border: none;
+  background: none;
+  color: var(--fg-quaternary);
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+
+  &:hover {
+    color: var(--fg-secondary);
+    background: var(--bg-secondary-hover);
+  }
+}
+
+.count {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 16px;
+  height: 16px;
+  padding: 0 4px;
+  border-radius: 999px;
+  background: var(--fg-brand-secondary);
+  color: var(--fg-white);
+  font-size: 0.6875rem;
+  font-weight: 600;
+}
+
+.comments-panel {
+  display: flex;
+  flex-direction: column;
+  width: 280px;
+  max-width: 80vw;
+}
+
+.panel-header {
+  padding-bottom: var(--spacing-8);
+  margin-bottom: var(--spacing-8);
+  border-bottom: 1px solid var(--border-secondary);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.comment-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-12);
+  max-height: 240px;
+  overflow-y: auto;
+  margin-bottom: var(--spacing-12);
+}
+
+.comment {
+  display: flex;
+  gap: var(--spacing-8);
+  align-items: flex-start;
+}
+
+.comment-body {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.comment-meta {
+  display: flex;
+  align-items: baseline;
+  gap: var(--spacing-8);
+}
+
+.comment-author {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.comment-time {
+  font-size: 0.75rem;
+  color: var(--text-tertiary);
+}
+
+.comment-text {
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  word-break: break-word;
+}
+
+.add-comment {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-8);
+  padding-top: var(--spacing-12);
+  border-top: 1px solid var(--border-secondary);
+}
+
+.add-comment input {
+  flex: 1 0 0;
+  min-width: 0;
+  padding: var(--spacing-6) var(--spacing-8);
+  border: 1px solid var(--border-primary);
+  border-radius: 999px;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-size: 0.875rem;
+  font-family: inherit;
+
+  &:focus {
+    outline: 2px solid var(--border-brand);
+    outline-offset: -1px;
+  }
+}
+
+.send-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  border: none;
+  border-radius: 50%;
+  background: none;
+  color: var(--fg-brand-secondary);
+  cursor: pointer;
+
+  &:hover {
+    background: var(--bg-brand-primary);
+  }
+}

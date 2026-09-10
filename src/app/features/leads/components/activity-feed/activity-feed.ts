@@ -16,7 +16,7 @@ import { ActivityFeedItem } from './activity-feed-item';
           </div>
         }
         <div class="group">
-          @for (item of group.items; track item.title; let last = $last) {
+          @for (item of group.items; track item.id; let last = $last) {
             <app-activity-feed-item [item]="item" [isLast]="last" />
           }
         </div>
