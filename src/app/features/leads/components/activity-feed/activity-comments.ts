@@ -1,6 +1,7 @@
 import { Component, input, linkedSignal, viewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Comment01Icon, SentIcon } from '@hugeicons/core-free-icons';
+import Comment01Icon from '@hugeicons/core-free-icons/Comment01Icon';
+import SentIcon from '@hugeicons/core-free-icons/SentIcon';
 import { Avatar } from 'primeng/avatar';
 import { Popover } from 'primeng/popover';
 import { AppIcon } from '../../../../shared/ui/icon/icon';

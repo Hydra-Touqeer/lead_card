@@ -1,14 +1,12 @@
 import { IconSvgObject } from '@hugeicons/angular';
-import {
-  Analytics01Icon,
-  ChatBotIcon,
-  DashboardSquare01Icon,
-  ListViewIcon,
-  Message01Icon,
-  Ticket01Icon,
-  UserGroupIcon,
-  WorkflowSquare01Icon,
-} from '@hugeicons/core-free-icons';
+import Analytics01Icon from '@hugeicons/core-free-icons/Analytics01Icon';
+import ChatBotIcon from '@hugeicons/core-free-icons/ChatBotIcon';
+import DashboardSquare01Icon from '@hugeicons/core-free-icons/DashboardSquare01Icon';
+import ListViewIcon from '@hugeicons/core-free-icons/ListViewIcon';
+import Message01Icon from '@hugeicons/core-free-icons/Message01Icon';
+import Ticket01Icon from '@hugeicons/core-free-icons/Ticket01Icon';
+import UserGroupIcon from '@hugeicons/core-free-icons/UserGroupIcon';
+import WorkflowSquare01Icon from '@hugeicons/core-free-icons/WorkflowSquare01Icon';
 
 export interface NavItem {
   label: string;

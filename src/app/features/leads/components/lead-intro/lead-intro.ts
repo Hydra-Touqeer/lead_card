@@ -1,5 +1,5 @@
 import { Component, input } from '@angular/core';
-import { GitCompareIcon } from '@hugeicons/core-free-icons';
+import GitCompareIcon from '@hugeicons/core-free-icons/GitCompareIcon';
 import { Button } from 'primeng/button';
 import { Badge } from '../../../../shared/ui/badge/badge';
 import { AppIcon } from '../../../../shared/ui/icon/icon';

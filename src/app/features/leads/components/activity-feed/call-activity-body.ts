@@ -1,5 +1,6 @@
 import { Component, ElementRef, computed, input, signal, viewChild } from '@angular/core';
-import { PauseIcon, PlayIcon } from '@hugeicons/core-free-icons';
+import PauseIcon from '@hugeicons/core-free-icons/PauseIcon';
+import PlayIcon from '@hugeicons/core-free-icons/PlayIcon';
 import { AppIcon } from '../../../../shared/ui/icon/icon';
 
 function formatDuration(totalSeconds: number): string {

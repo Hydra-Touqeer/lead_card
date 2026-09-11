@@ -1,6 +1,10 @@
 import { Component, input, linkedSignal, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { ArrowDown01Icon, Forward01Icon, PencilEdit02Icon, RefreshIcon, ReplyIcon } from '@hugeicons/core-free-icons';
+import ArrowDown01Icon from '@hugeicons/core-free-icons/ArrowDown01Icon';
+import Forward01Icon from '@hugeicons/core-free-icons/Forward01Icon';
+import PencilEdit02Icon from '@hugeicons/core-free-icons/PencilEdit02Icon';
+import RefreshIcon from '@hugeicons/core-free-icons/RefreshIcon';
+import ReplyIcon from '@hugeicons/core-free-icons/ReplyIcon';
 import { AppIcon } from '../../../../shared/ui/icon/icon';
 import { EmailMessage } from '../../models/activity.model';
 import { CURRENT_USER } from './activity-options.mock';

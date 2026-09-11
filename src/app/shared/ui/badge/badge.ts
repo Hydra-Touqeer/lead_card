@@ -1,6 +1,6 @@
 import { NgTemplateOutlet } from '@angular/common';
 import { Component, input } from '@angular/core';
-import { ArrowDown01Icon } from '@hugeicons/core-free-icons';
+import ArrowDown01Icon from '@hugeicons/core-free-icons/ArrowDown01Icon';
 import { AppIcon } from '../icon/icon';
 
 @Component({
