@@ -57,7 +57,7 @@ type RailTab = 'tasks' | 'files' | 'log';
         <div class="panel-card">
           <div class="panel-header">
             <div class="header-content">
-              <span class="header-title">Pending Tasks</span>
+              <span class="header-title">Tasks</span>
               <app-badge [label]="tasks().length.toString()" />
             </div>
             <div class="header-divider"></div>

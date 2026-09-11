@@ -1,0 +1,60 @@
+:host {
+  display: block;
+}
+
+.ask-ai-trigger {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-8);
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  text-align: left;
+
+  &:hover .brand {
+    text-decoration: underline;
+    text-decoration-color: var(--fg-brand-secondary);
+  }
+
+  &:disabled {
+    cursor: default;
+  }
+}
+
+.logomark {
+  width: 17px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.ask-ai-text {
+  font-size: 0.875rem;
+  line-height: 1.5rem;
+  color: var(--text-tertiary);
+}
+
+.brand {
+  font-weight: 500;
+  background: linear-gradient(180deg, #0017e4 0%, #3793ff 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.emphasis {
+  font-weight: 500;
+  color: var(--text-tertiary);
+}
+
+.ask-ai-summary {
+  margin: var(--spacing-12) 0 0;
+  font-size: 0.875rem;
+  line-height: 1.375rem;
+  color: var(--text-secondary);
+
+  &.generating {
+    color: var(--text-tertiary);
+    font-style: italic;
+  }
+}

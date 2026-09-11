@@ -1,6 +1,11 @@
 import { ActivityGroup, ActivityPerson } from '../../models/activity.model';
 import { Task } from '../../models/task.model';
-import { LeadContact, LeadStatusBadge, LeadTag } from '../../components/lead-intro/lead-intro';
+import {
+  LeadContact,
+  LeadStatusBadge,
+  LeadTag,
+  LeadWorkflow,
+} from '../../components/lead-intro/lead-intro';
 import { CURRENT_USER } from '../../components/activity-feed/activity-options.mock';
 
 const SAAD_HASAN: ActivityPerson = {
@@ -30,6 +35,44 @@ export const MOCK_CONTACTS: LeadContact[] = [
   { initials: 'DW', name: 'Dana Whitfield', role: 'Primary contact' },
   { initials: 'ML', name: 'Marcus Lee', role: 'AR Manager' },
   { initials: 'PN', name: 'Priya Nair', role: 'Credit Controller' },
+];
+
+export const MOCK_WORKFLOWS: LeadWorkflow[] = [
+  {
+    id: 'wf-1',
+    name: 'Third Party Contingency Onboarding',
+    status: 'Active',
+    statusDotColor: 'var(--fg-success-primary)',
+    currentStep: 'Step 3 of 5 · Awaiting signed agreement',
+  },
+  {
+    id: 'wf-2',
+    name: 'Credit Check & Verification',
+    status: 'Active',
+    statusDotColor: 'var(--fg-success-primary)',
+    currentStep: 'Step 2 of 4 · Running credit check',
+  },
+  {
+    id: 'wf-3',
+    name: 'First Party Fit Assessment',
+    status: 'Active',
+    statusDotColor: 'var(--fg-success-primary)',
+    currentStep: 'Step 1 of 3 · Discovery call scheduled',
+  },
+  {
+    id: 'wf-4',
+    name: 'Compliance Review',
+    status: 'Pending',
+    statusDotColor: 'var(--fg-warning-primary)',
+    currentStep: 'Step 1 of 2 · Awaiting document upload',
+  },
+  {
+    id: 'wf-5',
+    name: 'Renewal Reminder',
+    status: 'Active',
+    statusDotColor: 'var(--fg-success-primary)',
+    currentStep: 'Step 2 of 2 · Reminder scheduled',
+  },
 ];
 
 const SYSTEM_ICON = { iconBackground: 'var(--bg-quaternary)', iconColor: 'var(--fg-quaternary)' };
