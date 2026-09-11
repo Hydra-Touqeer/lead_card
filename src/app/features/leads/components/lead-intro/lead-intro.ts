@@ -2,6 +2,7 @@ import { Component, input } from '@angular/core';
 import GitCompareIcon from '@hugeicons/core-free-icons/GitCompareIcon';
 import { Button } from 'primeng/button';
 import { Popover } from 'primeng/popover';
+import { Tooltip } from 'primeng/tooltip';
 import { Badge } from '../../../../shared/ui/badge/badge';
 import { AppIcon } from '../../../../shared/ui/icon/icon';
 import { AskCollectwareAi } from './ask-collectware-ai';
@@ -35,7 +36,7 @@ export interface LeadContact {
 
 @Component({
   selector: 'app-lead-intro',
-  imports: [AppIcon, Badge, Button, Popover, StatusBadgeSelect, AskCollectwareAi],
+  imports: [AppIcon, Badge, Button, Popover, Tooltip, StatusBadgeSelect, AskCollectwareAi],
   styleUrl: './lead-intro.scss',
   template: `
     <div class="lead-intro">
@@ -99,7 +100,9 @@ export interface LeadContact {
                   (click)="openWorkflow(workflow); workflowsPopover.hide()"
                 >
                   <span class="workflow-row-top">
-                    <span class="workflow-name">{{ workflow.name }}</span>
+                    <span class="workflow-name" [pTooltip]="workflow.name" tooltipPosition="top">{{
+                      workflow.name
+                    }}</span>
                     <span class="workflow-status">
                       <span class="dot" [style.background]="workflow.statusDotColor"></span>
                       {{ workflow.status }}
