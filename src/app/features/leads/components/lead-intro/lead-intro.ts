@@ -1,8 +1,10 @@
 import { Component, input } from '@angular/core';
 import GitCompareIcon from '@hugeicons/core-free-icons/GitCompareIcon';
 import { Button } from 'primeng/button';
+import { Popover } from 'primeng/popover';
 import { Badge } from '../../../../shared/ui/badge/badge';
 import { AppIcon } from '../../../../shared/ui/icon/icon';
+import { AskCollectwareAi } from './ask-collectware-ai';
 import { StatusBadgeSelect } from './status-badge-select';
 
 export interface LeadStatusBadge {
@@ -10,6 +12,14 @@ export interface LeadStatusBadge {
   dotColor: string;
   /** Alternative values the user can switch this badge to. Omit to render a static, non-interactive badge. */
   options?: string[];
+}
+
+export interface LeadWorkflow {
+  id: string;
+  name: string;
+  status: string;
+  statusDotColor: string;
+  currentStep: string;
 }
 
 export interface LeadTag {
@@ -25,7 +35,7 @@ export interface LeadContact {
 
 @Component({
   selector: 'app-lead-intro',
-  imports: [AppIcon, Badge, Button, StatusBadgeSelect],
+  imports: [AppIcon, Badge, Button, Popover, StatusBadgeSelect, AskCollectwareAi],
   styleUrl: './lead-intro.scss',
   template: `
     <div class="lead-intro">
@@ -68,15 +78,38 @@ export interface LeadContact {
           </div>
         </div>
 
-        @if (activeWorkflowsCount() > 0) {
+        @if (workflows().length > 0) {
           <p-button
             [link]="true"
             severity="primary"
             size="large"
-            [label]="'Active Workflows (' + activeWorkflowsCount() + ')'"
+            [label]="'Active Workflows (' + workflows().length + ')'"
+            (click)="workflowsPopover.toggle($event)"
           >
             <app-icon [icon]="workflowsIcon" [size]="16" />
           </p-button>
+
+          <p-popover #workflowsPopover>
+            <div class="workflows-panel">
+              <div class="panel-header">Active workflows</div>
+              @for (workflow of workflows(); track workflow.id) {
+                <button
+                  type="button"
+                  class="workflow-option"
+                  (click)="openWorkflow(workflow); workflowsPopover.hide()"
+                >
+                  <span class="workflow-row-top">
+                    <span class="workflow-name">{{ workflow.name }}</span>
+                    <span class="workflow-status">
+                      <span class="dot" [style.background]="workflow.statusDotColor"></span>
+                      {{ workflow.status }}
+                    </span>
+                  </span>
+                  <span class="workflow-step">{{ workflow.currentStep }}</span>
+                </button>
+              }
+            </div>
+          </p-popover>
         }
       </div>
 
@@ -104,6 +137,8 @@ export interface LeadContact {
           }
         </div>
       }
+
+      <app-ask-collectware-ai />
     </div>
   `,
 })
@@ -115,11 +150,15 @@ export class LeadIntro {
   readonly segmentLabel = input<string>();
   readonly segmentDetail = input<string>();
   readonly segmentDotColor = input<string>('var(--fg-warning-primary)');
-  readonly activeWorkflowsCount = input<number>(0);
+  readonly workflows = input<LeadWorkflow[]>([]);
   readonly tags = input<LeadTag[]>([]);
   readonly showContacts = input<boolean>(true);
   readonly contacts = input<LeadContact[]>([]);
   readonly additionalContactsCount = input<number>(0);
 
   protected readonly workflowsIcon = GitCompareIcon;
+
+  protected openWorkflow(workflow: LeadWorkflow): void {
+    // TODO: navigate to the workflow's detail view once that route exists.
+  }
 }

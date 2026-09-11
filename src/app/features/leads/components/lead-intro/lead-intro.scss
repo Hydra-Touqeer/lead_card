@@ -2,6 +2,13 @@
   display: block;
 }
 
+// p-popover's host has no display of its own (defaults to inline), so as a
+// direct child of a gapped flex row it would otherwise still consume a `gap`
+// unit despite being invisible and zero-size.
+p-popover {
+  display: none;
+}
+
 .lead-intro {
   display: flex;
   flex-direction: column;
@@ -163,4 +170,64 @@
   font-weight: 500;
   color: var(--text-secondary);
   cursor: pointer;
+}
+
+.workflows-panel {
+  display: flex;
+  flex-direction: column;
+  width: 260px;
+}
+
+.panel-header {
+  padding-bottom: var(--spacing-8);
+  margin-bottom: var(--spacing-8);
+  border-bottom: 1px solid var(--border-secondary);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.workflow-option {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  width: 100%;
+  padding: var(--spacing-8);
+  border: none;
+  border-radius: var(--radius-sm);
+  background: none;
+  text-align: left;
+  cursor: pointer;
+
+  &:hover {
+    background: var(--bg-secondary-hover);
+  }
+}
+
+.workflow-row-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-8);
+}
+
+.workflow-name {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.workflow-status {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-4);
+  flex-shrink: 0;
+  font-size: 0.75rem;
+  color: var(--text-tertiary);
+  white-space: nowrap;
+}
+
+.workflow-step {
+  font-size: 0.75rem;
+  color: var(--text-tertiary);
 }

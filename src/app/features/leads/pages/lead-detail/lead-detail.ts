@@ -5,7 +5,14 @@ import { LeadActionsToolbar } from '../../components/lead-actions-toolbar/lead-a
 import { LeadIntro } from '../../components/lead-intro/lead-intro';
 import { LeadTabs } from '../../components/lead-tabs/lead-tabs';
 import { TaskPanel } from '../../components/task-panel/task-panel';
-import { MOCK_ACTIVITY_GROUPS, MOCK_CONTACTS, MOCK_STATUS_BADGES, MOCK_TAGS, MOCK_TASKS } from './lead-detail.mock';
+import {
+  MOCK_ACTIVITY_GROUPS,
+  MOCK_CONTACTS,
+  MOCK_STATUS_BADGES,
+  MOCK_TAGS,
+  MOCK_TASKS,
+  MOCK_WORKFLOWS,
+} from './lead-detail.mock';
 
 @Component({
   selector: 'app-lead-detail',
@@ -21,7 +28,7 @@ import { MOCK_ACTIVITY_GROUPS, MOCK_CONTACTS, MOCK_STATUS_BADGES, MOCK_TAGS, MOC
           [statusBadges]="statusBadges"
           segmentLabel="Yellow Ribbon"
           segmentDetail="Revenue: $10M–$30M"
-          [activeWorkflowsCount]="5"
+          [workflows]="workflows"
           [tags]="tags"
           [showContacts]="false"
           [contacts]="contacts"
@@ -50,6 +57,7 @@ export class LeadDetail {
   protected readonly statusBadges = MOCK_STATUS_BADGES;
   protected readonly tags = MOCK_TAGS;
   protected readonly contacts = MOCK_CONTACTS;
+  protected readonly workflows = MOCK_WORKFLOWS;
   protected readonly activityGroups = MOCK_ACTIVITY_GROUPS;
   protected readonly tasks = MOCK_TASKS;
   protected readonly panelCollapsed = signal(false);
