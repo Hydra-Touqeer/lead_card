@@ -1,11 +1,12 @@
-import { Component, input, linkedSignal, viewChild } from '@angular/core';
+import { Component, input, linkedSignal, output, viewChild } from '@angular/core';
 import { Popover } from 'primeng/popover';
+import { Tooltip } from 'primeng/tooltip';
 import { Badge } from '../../../../shared/ui/badge/badge';
 import { LinkedOpportunity } from '../../models/activity.model';
 
 @Component({
   selector: 'app-activity-opportunity-link',
-  imports: [Popover, Badge],
+  imports: [Popover, Badge, Tooltip],
   styleUrl: './activity-opportunity-link.scss',
   template: `
     @if (current(); as opportunity) {
@@ -15,7 +16,12 @@ import { LinkedOpportunity } from '../../models/activity.model';
         inside flex layouts), which means it has no geometry of its own. A
         popover anchored to an element with no box positions at (0, 0).
       -->
-      <span class="badge-trigger" (click)="popover.toggle($event)">
+      <span
+        class="badge-trigger"
+        pTooltip="Linked opportunity"
+        tooltipPosition="top"
+        (click)="popover.toggle($event)"
+      >
         <app-badge [label]="opportunity.name" [dropdown]="true" />
       </span>
     }
@@ -33,6 +39,12 @@ import { LinkedOpportunity } from '../../models/activity.model';
             {{ opportunity.name }}
           </button>
         }
+        @if (current()) {
+          <div class="panel-divider"></div>
+          <button type="button" class="remove-option" (click)="remove(); popover.hide()">
+            Remove opportunity
+          </button>
+        }
       </div>
     </p-popover>
   `,
@@ -42,6 +54,7 @@ export class ActivityOpportunityLink {
     alias: 'linkedOpportunity',
   });
   readonly options = input<LinkedOpportunity[]>([]);
+  readonly linkedOpportunityChange = output<LinkedOpportunity | undefined>();
 
   protected readonly current = linkedSignal(() => this.initialLinkedOpportunity());
 
@@ -49,6 +62,12 @@ export class ActivityOpportunityLink {
 
   protected select(opportunity: LinkedOpportunity): void {
     this.current.set(opportunity);
+    this.linkedOpportunityChange.emit(opportunity);
+  }
+
+  protected remove(): void {
+    this.current.set(undefined);
+    this.linkedOpportunityChange.emit(undefined);
   }
 
   openPanel(anchor: HTMLElement): void {

@@ -2,6 +2,13 @@
   display: contents;
 }
 
+// p-popover's host has no display of its own (defaults to inline), so under
+// a `display: contents` host it would otherwise flatten into an invisible,
+// zero-size flex item that still eats a `gap` unit from the parent layout.
+p-popover {
+  display: none;
+}
+
 .outcome-label {
   border: none;
   background: none;
@@ -51,5 +58,28 @@
   &.selected {
     color: var(--fg-brand-secondary);
     font-weight: 600;
+  }
+}
+
+.panel-divider {
+  height: 1px;
+  margin: var(--spacing-4) 0;
+  background: var(--border-secondary);
+}
+
+.remove-option {
+  display: block;
+  width: 100%;
+  padding: var(--spacing-8);
+  border: none;
+  border-radius: var(--radius-sm);
+  background: none;
+  text-align: left;
+  font-size: 0.875rem;
+  color: var(--text-error-primary);
+  cursor: pointer;
+
+  &:hover {
+    background: var(--bg-error-primary);
   }
 }

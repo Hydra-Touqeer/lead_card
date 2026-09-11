@@ -5,6 +5,7 @@ import Forward01Icon from '@hugeicons/core-free-icons/Forward01Icon';
 import PencilEdit02Icon from '@hugeicons/core-free-icons/PencilEdit02Icon';
 import RefreshIcon from '@hugeicons/core-free-icons/RefreshIcon';
 import ReplyIcon from '@hugeicons/core-free-icons/ReplyIcon';
+import { Badge } from '../../../../shared/ui/badge/badge';
 import { AppIcon } from '../../../../shared/ui/icon/icon';
 import { EmailMessage } from '../../models/activity.model';
 import { CURRENT_USER } from './activity-options.mock';
@@ -15,7 +16,7 @@ const PREVIEW_LENGTH = 70;
 
 @Component({
   selector: 'app-email-activity-body',
-  imports: [FormsModule, AppIcon],
+  imports: [FormsModule, AppIcon, Badge],
   styleUrl: './email-activity-body.scss',
   template: `
     <div class="email-body">
@@ -45,7 +46,7 @@ const PREVIEW_LENGTH = 70;
 
               <div class="header-meta">
                 @if (message.error) {
-                  <span class="error-badge">Error</span>
+                  <app-badge label="Error" dotColor="var(--fg-error-primary)" />
                 }
                 <span class="timestamp">{{ message.timestamp }}</span>
               </div>
@@ -55,7 +56,11 @@ const PREVIEW_LENGTH = 70;
               <div class="error-banner">
                 <p>{{ message.error }}</p>
                 <div class="error-actions">
-                  <button type="button" (click)="retry(message)" [disabled]="retryingId() === message.id">
+                  <button
+                    type="button"
+                    (click)="retry(message)"
+                    [disabled]="retryingId() === message.id"
+                  >
                     <app-icon [icon]="retryIcon" [size]="14" />
                     {{ retryingId() === message.id ? 'Retrying…' : 'Retry Sending' }}
                   </button>
@@ -96,7 +101,7 @@ const PREVIEW_LENGTH = 70;
             <span class="sender">{{ message.from.name }}</span>
             <span class="preview">{{ preview(message.body) }}</span>
             @if (message.error) {
-              <span class="error-badge">Error</span>
+              <app-badge label="Error" dotColor="var(--fg-error-primary)" />
             }
             <span class="timestamp">{{ message.timestamp }}</span>
           </button>
@@ -113,7 +118,11 @@ const PREVIEW_LENGTH = 70;
               <span class="compose-to">To: {{ composeTo }}</span>
             }
           </div>
-          <textarea [(ngModel)]="composeDraft" rows="4" placeholder="Write your message…"></textarea>
+          <textarea
+            [(ngModel)]="composeDraft"
+            rows="4"
+            placeholder="Write your message…"
+          ></textarea>
           <div class="box-actions">
             <button type="button" class="primary" (click)="sendCompose()">Send</button>
             <button type="button" (click)="cancelCompose()">Cancel</button>
@@ -130,7 +139,9 @@ export class EmailActivityBody {
   // Derived from the input (not the local `messages` copy) so that retrying/
   // editing a message - which mutates `messages` in place - doesn't reset
   // which message is expanded.
-  protected readonly expandedId = linkedSignal<string | null>(() => this.initialMessages().at(-1)?.id ?? null);
+  protected readonly expandedId = linkedSignal<string | null>(
+    () => this.initialMessages().at(-1)?.id ?? null,
+  );
   protected readonly retryingId = signal<string | null>(null);
   protected readonly editingId = signal<string | null>(null);
   protected editDraft = '';
@@ -155,7 +166,9 @@ export class EmailActivityBody {
   protected retry(message: EmailMessage): void {
     this.retryingId.set(message.id);
     setTimeout(() => {
-      this.messages.update((list) => list.map((m) => (m.id === message.id ? { ...m, error: undefined } : m)));
+      this.messages.update((list) =>
+        list.map((m) => (m.id === message.id ? { ...m, error: undefined } : m)),
+      );
       this.retryingId.set(null);
     }, 1000);
   }
@@ -174,7 +187,9 @@ export class EmailActivityBody {
     if (!text) {
       return;
     }
-    this.messages.update((list) => list.map((m) => (m.id === message.id ? { ...m, body: text } : m)));
+    this.messages.update((list) =>
+      list.map((m) => (m.id === message.id ? { ...m, body: text } : m)),
+    );
     this.editingId.set(null);
   }
 

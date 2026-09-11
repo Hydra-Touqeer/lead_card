@@ -3,10 +3,13 @@ import GitCompareIcon from '@hugeicons/core-free-icons/GitCompareIcon';
 import { Button } from 'primeng/button';
 import { Badge } from '../../../../shared/ui/badge/badge';
 import { AppIcon } from '../../../../shared/ui/icon/icon';
+import { StatusBadgeSelect } from './status-badge-select';
 
 export interface LeadStatusBadge {
   label: string;
   dotColor: string;
+  /** Alternative values the user can switch this badge to. Omit to render a static, non-interactive badge. */
+  options?: string[];
 }
 
 export interface LeadTag {
@@ -22,13 +25,21 @@ export interface LeadContact {
 
 @Component({
   selector: 'app-lead-intro',
-  imports: [AppIcon, Badge, Button],
+  imports: [AppIcon, Badge, Button, StatusBadgeSelect],
   styleUrl: './lead-intro.scss',
   template: `
     <div class="lead-intro">
       <div class="status-row">
         @for (badge of statusBadges(); track badge.label) {
-          <app-badge [label]="badge.label" [dotColor]="badge.dotColor" [dropdown]="true" />
+          @if (badge.options && badge.options.length > 0) {
+            <app-status-badge-select
+              [label]="badge.label"
+              [dotColor]="badge.dotColor"
+              [options]="badge.options"
+            />
+          } @else {
+            <app-badge [label]="badge.label" [dotColor]="badge.dotColor" />
+          }
         }
         @if (segmentLabel()) {
           <span class="segment">
@@ -46,12 +57,24 @@ export interface LeadContact {
           <img class="company-logo" [src]="companyLogoUrl()" alt="" />
           <div class="company-name-block">
             <p class="company-name">{{ companyName() }}</p>
-            <p class="company-domain">{{ companyDomain() }} ↗</p>
+            <a
+              class="company-domain"
+              [href]="'https://' + companyDomain()"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {{ companyDomain() }} ↗
+            </a>
           </div>
         </div>
 
         @if (activeWorkflowsCount() > 0) {
-          <p-button [link]="true" severity="primary" size="large" [label]="'Active Workflows (' + activeWorkflowsCount() + ')'">
+          <p-button
+            [link]="true"
+            severity="primary"
+            size="large"
+            [label]="'Active Workflows (' + activeWorkflowsCount() + ')'"
+          >
             <app-icon [icon]="workflowsIcon" [size]="16" />
           </p-button>
         }

@@ -9,35 +9,28 @@ p-popover {
   display: none;
 }
 
-.kebab-trigger {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 24px;
-  height: 24px;
-  padding: 4px;
-  border: none;
-  border-radius: var(--radius-sm);
-  background: none;
-  color: var(--fg-quaternary);
+.badge-trigger {
+  display: inline-flex;
   cursor: pointer;
-
-  &:hover {
-    color: var(--fg-secondary);
-    background: var(--bg-secondary-hover);
-  }
 }
 
-.menu-panel {
+.status-panel {
   display: flex;
   flex-direction: column;
   width: 200px;
 }
 
-.menu-item {
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-8);
+.panel-header {
+  padding-bottom: var(--spacing-8);
+  margin-bottom: var(--spacing-8);
+  border-bottom: 1px solid var(--border-secondary);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.status-option {
+  display: block;
   width: 100%;
   padding: var(--spacing-8);
   border: none;
@@ -52,13 +45,8 @@ p-popover {
     background: var(--bg-secondary-hover);
   }
 
-  &.destructive {
-    color: var(--fg-error-primary);
+  &.selected {
+    color: var(--fg-brand-secondary);
+    font-weight: 600;
   }
-}
-
-.menu-divider {
-  margin: var(--spacing-8) 0;
-  border: none;
-  border-top: 1px solid var(--border-secondary);
 }

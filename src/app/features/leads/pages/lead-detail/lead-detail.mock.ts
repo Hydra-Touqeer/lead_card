@@ -9,8 +9,16 @@ const SAAD_HASAN: ActivityPerson = {
 };
 
 export const MOCK_STATUS_BADGES: LeadStatusBadge[] = [
-  { label: 'Inbound · Website', dotColor: 'var(--fg-brand-primary)' },
-  { label: 'Active', dotColor: 'var(--fg-success-primary)' },
+  {
+    label: 'Inbound · Website',
+    dotColor: 'var(--fg-brand-primary)',
+    options: ['Inbound · Website', 'Inbound · Phone', 'Outbound · Referral'],
+  },
+  {
+    label: 'Active',
+    dotColor: 'var(--fg-success-primary)',
+    options: ['Active', 'On Hold', 'Inactive'],
+  },
 ];
 
 export const MOCK_TAGS: LeadTag[] = [
