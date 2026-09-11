@@ -1,17 +1,15 @@
 import { Component, computed, input, output, signal, viewChild } from '@angular/core';
 import { IconSvgObject } from '@hugeicons/angular';
-import {
-  Calendar01Icon,
-  CallIncoming01Icon,
-  CallMissed01Icon,
-  CallOutgoing01Icon,
-  Exchange01Icon,
-  Flag01Icon,
-  Mail01Icon,
-  Message01Icon,
-  StickyNote01Icon,
-  TaskDone01Icon,
-} from '@hugeicons/core-free-icons';
+import Calendar01Icon from '@hugeicons/core-free-icons/Calendar01Icon';
+import CallIncoming01Icon from '@hugeicons/core-free-icons/CallIncoming01Icon';
+import CallMissed01Icon from '@hugeicons/core-free-icons/CallMissed01Icon';
+import CallOutgoing01Icon from '@hugeicons/core-free-icons/CallOutgoing01Icon';
+import Exchange01Icon from '@hugeicons/core-free-icons/Exchange01Icon';
+import Flag01Icon from '@hugeicons/core-free-icons/Flag01Icon';
+import Mail01Icon from '@hugeicons/core-free-icons/Mail01Icon';
+import Message01Icon from '@hugeicons/core-free-icons/Message01Icon';
+import StickyNote01Icon from '@hugeicons/core-free-icons/StickyNote01Icon';
+import TaskDone01Icon from '@hugeicons/core-free-icons/TaskDone01Icon';
 import { Badge } from '../../../../shared/ui/badge/badge';
 import { AppIcon } from '../../../../shared/ui/icon/icon';
 import { ActivityItem, CallDirection } from '../../models/activity.model';

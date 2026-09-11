@@ -1,5 +1,9 @@
 import { Component, inject } from '@angular/core';
-import { ArrowDown01Icon, MoonIcon, Notification01Icon, Search01Icon, Sun01Icon } from '@hugeicons/core-free-icons';
+import ArrowDown01Icon from '@hugeicons/core-free-icons/ArrowDown01Icon';
+import MoonIcon from '@hugeicons/core-free-icons/MoonIcon';
+import Notification01Icon from '@hugeicons/core-free-icons/Notification01Icon';
+import Search01Icon from '@hugeicons/core-free-icons/Search01Icon';
+import Sun01Icon from '@hugeicons/core-free-icons/Sun01Icon';
 import { Avatar } from 'primeng/avatar';
 import { IconField } from 'primeng/iconfield';
 import { InputIcon } from 'primeng/inputicon';

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
-import { SidebarLeftIcon } from '@hugeicons/core-free-icons';
+import SidebarLeftIcon from '@hugeicons/core-free-icons/SidebarLeftIcon';
 import { AppIcon } from '../../shared/ui/icon/icon';
 import { NAV_ITEMS } from './nav-items';
 

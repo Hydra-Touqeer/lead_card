@@ -1,12 +1,10 @@
 import { Component, input, model, signal } from '@angular/core';
-import {
-  ArrowLeftDoubleIcon,
-  ArrowRightDoubleIcon,
-  CheckListIcon,
-  Clock01Icon,
-  File02Icon,
-  Search01Icon,
-} from '@hugeicons/core-free-icons';
+import ArrowLeftDoubleIcon from '@hugeicons/core-free-icons/ArrowLeftDoubleIcon';
+import ArrowRightDoubleIcon from '@hugeicons/core-free-icons/ArrowRightDoubleIcon';
+import CheckListIcon from '@hugeicons/core-free-icons/CheckListIcon';
+import Clock01Icon from '@hugeicons/core-free-icons/Clock01Icon';
+import File02Icon from '@hugeicons/core-free-icons/File02Icon';
+import Search01Icon from '@hugeicons/core-free-icons/Search01Icon';
 import { IconField } from 'primeng/iconfield';
 import { InputIcon } from 'primeng/inputicon';
 import { InputText } from 'primeng/inputtext';

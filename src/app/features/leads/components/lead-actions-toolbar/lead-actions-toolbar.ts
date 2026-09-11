@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { MoreVerticalIcon } from '@hugeicons/core-free-icons';
+import MoreVerticalIcon from '@hugeicons/core-free-icons/MoreVerticalIcon';
 import { MenuItem } from 'primeng/api';
 import { SplitButton } from 'primeng/splitbutton';
 import { AppIcon } from '../../../../shared/ui/icon/icon';

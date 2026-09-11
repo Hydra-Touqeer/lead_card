@@ -1,5 +1,10 @@
 import { Component, ElementRef, input, output, viewChild } from '@angular/core';
-import { Comment01Icon, Copy01Icon, Delete02Icon, Link04Icon, MoreVerticalIcon, Tick02Icon } from '@hugeicons/core-free-icons';
+import Comment01Icon from '@hugeicons/core-free-icons/Comment01Icon';
+import Copy01Icon from '@hugeicons/core-free-icons/Copy01Icon';
+import Delete02Icon from '@hugeicons/core-free-icons/Delete02Icon';
+import Link04Icon from '@hugeicons/core-free-icons/Link04Icon';
+import MoreVerticalIcon from '@hugeicons/core-free-icons/MoreVerticalIcon';
+import Tick02Icon from '@hugeicons/core-free-icons/Tick02Icon';
 import { Popover } from 'primeng/popover';
 import { AppIcon } from '../../../../shared/ui/icon/icon';
 
