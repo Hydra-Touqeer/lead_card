@@ -92,11 +92,11 @@
   white-space: nowrap;
 }
 
-.tags-row {
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-8);
-  flex-wrap: wrap;
+.copied-badge {
+  font-size: 12px;
+  line-height: 18px;
+  color: var(--fg-success-primary);
+  white-space: nowrap;
 }
 
 .body {

@@ -1,4 +1,4 @@
-import { Component, computed, input } from '@angular/core';
+import { Component, computed, input, output, signal, viewChild } from '@angular/core';
 import { IconSvgObject } from '@hugeicons/angular';
 import {
   Calendar01Icon,
@@ -15,10 +15,13 @@ import {
 import { Badge } from '../../../../shared/ui/badge/badge';
 import { AppIcon } from '../../../../shared/ui/icon/icon';
 import { ActivityItem, CallDirection } from '../../models/activity.model';
+import { ActivityActionsMenu } from './activity-actions-menu';
 import { ActivityComments } from './activity-comments';
 import { ActivityOpportunityLink } from './activity-opportunity-link';
 import { CURRENT_USER, MOCK_OPPORTUNITY_OPTIONS, MOCK_OUTCOME_OPTIONS } from './activity-options.mock';
 import { ActivityOutcomeComponent } from './activity-outcome';
+import { CallActivityBody } from './call-activity-body';
+import { EmailActivityBody } from './email-activity-body';
 
 const CALL_DIRECTION_ICON: Record<CallDirection, IconSvgObject> = {
   outgoing: CallOutgoing01Icon,
@@ -34,12 +37,21 @@ const OUTCOME_SUPPORTED_TYPES: ReadonlySet<ActivityItem['type']> = new Set(['cal
 
 @Component({
   selector: 'app-activity-feed-item',
-  imports: [AppIcon, Badge, ActivityComments, ActivityOutcomeComponent, ActivityOpportunityLink],
+  imports: [
+    AppIcon,
+    Badge,
+    ActivityComments,
+    ActivityOutcomeComponent,
+    ActivityOpportunityLink,
+    ActivityActionsMenu,
+    CallActivityBody,
+    EmailActivityBody,
+  ],
   styleUrl: './activity-feed-item.scss',
   template: `
     @let activity = item();
 
-    <div class="feed-item">
+    <div class="feed-item" [id]="'activity-' + activity.id">
       <div class="avatar-wrap">
         <div class="type-icon" [style.background]="iconMeta().background" [style.color]="iconMeta().color">
           <app-icon [icon]="iconMeta().icon" [size]="18" />
@@ -95,18 +107,25 @@ const OUTCOME_SUPPORTED_TYPES: ReadonlySet<ActivityItem['type']> = new Set(['cal
               />
             }
             <app-activity-comments [comments]="activity.comments" [currentUser]="currentUser" />
+            <app-activity-actions-menu
+              [hasComments]="activity.comments.length > 0"
+              [hasOutcome]="!!activity.outcome"
+              [hasLinkedOpportunity]="!!activity.linkedOpportunity"
+              [supportsOutcome]="supportsOutcome()"
+              [supportsOpportunityLink]="supportsOpportunityLink()"
+              (addComment)="onAddComment()"
+              (setOutcome)="onSetOutcome()"
+              (linkOpportunity)="onLinkOpportunity()"
+              (copyLink)="onCopyLink()"
+              (deleteActivity)="delete.emit()"
+            />
+            @if (justCopied()) {
+              <span class="copied-badge">Copied!</span>
+            }
             <img class="performed-by-avatar" [src]="activity.performedBy.avatarUrl" [alt]="activity.performedBy.name" />
             <span class="timestamp">{{ activity.timestamp }}</span>
           </div>
         </div>
-
-        @if (activity.tags && activity.tags.length > 0) {
-          <div class="tags-row">
-            @for (tag of activity.tags; track tag.label) {
-              <app-badge [label]="tag.label" [dotColor]="tag.dotColor" />
-            }
-          </div>
-        }
 
         <div class="body">
           @switch (activity.type) {
@@ -137,12 +156,14 @@ const OUTCOME_SUPPORTED_TYPES: ReadonlySet<ActivityItem['type']> = new Set(['cal
               }
             }
             @case ('call') {
-              <!-- Recording player + transcript arrive in pass 2 -->
-              <p class="meta-line">{{ activity.durationSeconds }}s</p>
+              <app-call-activity-body
+                [durationSeconds]="activity.durationSeconds"
+                [recordingUrl]="activity.recordingUrl"
+                [transcript]="activity.transcript"
+              />
             }
             @case ('email') {
-              <!-- Thread + reply/forward/retry arrive in pass 3 -->
-              <p class="meta-line">{{ activity.messages.length }} message{{ activity.messages.length === 1 ? '' : 's' }}</p>
+              <app-email-activity-body [messages]="activity.messages" />
             }
           }
         </div>
@@ -153,6 +174,7 @@ const OUTCOME_SUPPORTED_TYPES: ReadonlySet<ActivityItem['type']> = new Set(['cal
 export class ActivityFeedItem {
   readonly item = input.required<ActivityItem>();
   readonly isLast = input<boolean>(false);
+  readonly delete = output<void>();
 
   protected readonly currentUser = CURRENT_USER;
   protected readonly outcomeOptions = MOCK_OUTCOME_OPTIONS;
@@ -160,6 +182,13 @@ export class ActivityFeedItem {
 
   protected readonly supportsOutcome = computed(() => OUTCOME_SUPPORTED_TYPES.has(this.item().type));
   protected readonly supportsOpportunityLink = computed(() => this.item().type !== 'status-change');
+
+  protected readonly justCopied = signal(false);
+
+  private readonly outcomeCmp = viewChild(ActivityOutcomeComponent);
+  private readonly opportunityCmp = viewChild(ActivityOpportunityLink);
+  private readonly commentsCmp = viewChild(ActivityComments);
+  private readonly actionsMenu = viewChild(ActivityActionsMenu);
 
   protected readonly iconMeta = computed<{ icon: IconSvgObject; background: string; color: string }>(() => {
     const activity = this.item();
@@ -188,4 +217,30 @@ export class ActivityFeedItem {
         return { icon: Flag01Icon, background: activity.iconBackground, color: activity.iconColor };
     }
   });
+
+  protected onAddComment(): void {
+    this.openPanel(this.commentsCmp());
+  }
+
+  protected onSetOutcome(): void {
+    this.openPanel(this.outcomeCmp());
+  }
+
+  protected onLinkOpportunity(): void {
+    this.openPanel(this.opportunityCmp());
+  }
+
+  protected async onCopyLink(): Promise<void> {
+    const url = `${location.origin}${location.pathname}#activity-${this.item().id}`;
+    await navigator.clipboard.writeText(url);
+    this.justCopied.set(true);
+    setTimeout(() => this.justCopied.set(false), 1500);
+  }
+
+  private openPanel(target: { openPanel(anchor: HTMLElement): void } | undefined): void {
+    const anchor = this.actionsMenu()?.kebabBtn().nativeElement;
+    if (target && anchor) {
+      target.openPanel(anchor);
+    }
+  }
 }

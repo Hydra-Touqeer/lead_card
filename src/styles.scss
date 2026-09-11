@@ -16,3 +16,16 @@ body {
   color: var(--text-primary);
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
+
+// Form controls don't inherit font-family/size/color from the page by
+// default in any browser - they use the OS's form-control font unless told
+// otherwise. Without this, every button/input/textarea we write needs its
+// own font-family: inherit or silently falls back to the system font.
+button,
+input,
+textarea,
+select {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+}

@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, input, linkedSignal } from '@angular/core';
 import { ActivityGroup } from '../../models/activity.model';
 import { ActivityFeedItem } from './activity-feed-item';
 
@@ -17,7 +17,7 @@ import { ActivityFeedItem } from './activity-feed-item';
         }
         <div class="group">
           @for (item of group.items; track item.id; let last = $last) {
-            <app-activity-feed-item [item]="item" [isLast]="last" />
+            <app-activity-feed-item [item]="item" [isLast]="last" (delete)="removeActivity(item.id)" />
           }
         </div>
       }
@@ -25,5 +25,17 @@ import { ActivityFeedItem } from './activity-feed-item';
   `,
 })
 export class ActivityFeed {
-  readonly groups = input.required<ActivityGroup[]>();
+  readonly initialGroups = input.required<ActivityGroup[]>({ alias: 'groups' });
+
+  protected readonly groups = linkedSignal(() =>
+    this.initialGroups().map((group) => ({ ...group, items: [...group.items] })),
+  );
+
+  protected removeActivity(id: string): void {
+    this.groups.update((groups) =>
+      groups
+        .map((group) => ({ ...group, items: group.items.filter((item) => item.id !== id) }))
+        .filter((group) => group.items.length > 0),
+    );
+  }
 }

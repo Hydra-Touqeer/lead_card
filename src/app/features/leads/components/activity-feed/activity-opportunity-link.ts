@@ -1,4 +1,4 @@
-import { Component, input, linkedSignal } from '@angular/core';
+import { Component, input, linkedSignal, viewChild } from '@angular/core';
 import { Popover } from 'primeng/popover';
 import { Badge } from '../../../../shared/ui/badge/badge';
 import { LinkedOpportunity } from '../../models/activity.model';
@@ -9,11 +9,15 @@ import { LinkedOpportunity } from '../../models/activity.model';
   styleUrl: './activity-opportunity-link.scss',
   template: `
     @if (current(); as opportunity) {
-      <app-badge [label]="opportunity.name" [dropdown]="true" (click)="popover.toggle($event)" />
-    } @else {
-      <button type="button" class="link-add" (click)="popover.toggle($event)">
-        + Link to opportunity
-      </button>
+      <!--
+        The click handler goes on this wrapping span, not on app-badge directly:
+        Badge's host is "display: contents" (so it doesn't add an extra box
+        inside flex layouts), which means it has no geometry of its own. A
+        popover anchored to an element with no box positions at (0, 0).
+      -->
+      <span class="badge-trigger" (click)="popover.toggle($event)">
+        <app-badge [label]="opportunity.name" [dropdown]="true" />
+      </span>
     }
 
     <p-popover #popover>
@@ -41,7 +45,13 @@ export class ActivityOpportunityLink {
 
   protected readonly current = linkedSignal(() => this.initialLinkedOpportunity());
 
+  private readonly popoverRef = viewChild.required(Popover);
+
   protected select(opportunity: LinkedOpportunity): void {
     this.current.set(opportunity);
+  }
+
+  openPanel(anchor: HTMLElement): void {
+    this.popoverRef().show(undefined, anchor);
   }
 }

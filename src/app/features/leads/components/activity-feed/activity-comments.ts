@@ -1,4 +1,4 @@
-import { Component, input, linkedSignal } from '@angular/core';
+import { Component, input, linkedSignal, viewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Comment01Icon, SentIcon } from '@hugeicons/core-free-icons';
 import { Avatar } from 'primeng/avatar';
@@ -11,17 +11,17 @@ import { ActivityComment, ActivityPerson } from '../../models/activity.model';
   imports: [FormsModule, AppIcon, Avatar, Popover],
   styleUrl: './activity-comments.scss',
   template: `
-    <button
-      type="button"
-      class="comment-trigger"
-      [attr.aria-label]="comments().length + ' comment' + (comments().length === 1 ? '' : 's')"
-      (click)="popover.toggle($event)"
-    >
-      <app-icon [icon]="commentIcon" [size]="16" />
-      @if (comments().length > 0) {
+    @if (comments().length > 0) {
+      <button
+        type="button"
+        class="comment-trigger"
+        [attr.aria-label]="comments().length + ' comment' + (comments().length === 1 ? '' : 's')"
+        (click)="popover.toggle($event)"
+      >
+        <app-icon [icon]="commentIcon" [size]="16" />
         <span class="count">{{ comments().length }}</span>
-      }
-    </button>
+      </button>
+    }
 
     <p-popover #popover>
       <div class="comments-panel">
@@ -73,6 +73,12 @@ export class ActivityComments {
 
   protected readonly commentIcon = Comment01Icon;
   protected readonly sendIcon = SentIcon;
+
+  private readonly popoverRef = viewChild.required(Popover);
+
+  openPanel(anchor: HTMLElement): void {
+    this.popoverRef().show(undefined, anchor);
+  }
 
   protected submit(): void {
     const text = this.draft.trim();

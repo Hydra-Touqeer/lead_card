@@ -30,11 +30,6 @@ export interface LinkedOpportunity {
   name: string;
 }
 
-export interface ActivityTag {
-  label: string;
-  dotColor: string;
-}
-
 export type CallDirection = 'outgoing' | 'incoming' | 'missed' | 'unanswered';
 
 interface ActivityBase {
@@ -44,7 +39,6 @@ interface ActivityBase {
   comments: ActivityComment[];
   outcome?: ActivityOutcome;
   linkedOpportunity?: LinkedOpportunity;
-  tags?: ActivityTag[];
 }
 
 export interface NoteActivity extends ActivityBase {
@@ -118,17 +112,6 @@ export type ActivityItem =
   | StatusChangeActivity
   | TaskCompletedActivity
   | CustomActivity;
-
-/** Activity types that represent something at the opportunity level, not just the lead. */
-export const OPPORTUNITY_LEVEL_TYPES: ReadonlySet<ActivityItem['type']> = new Set([
-  'note',
-  'email',
-  'sms',
-  'call',
-  'meeting',
-  'task-completed',
-  'custom',
-]);
 
 export interface ActivityGroup {
   label?: string;
