@@ -2,6 +2,13 @@
   display: contents;
 }
 
+// p-popover's host has no display of its own (defaults to inline), so under
+// a `display: contents` host it would otherwise flatten into an invisible,
+// zero-size flex item that still eats a `gap` unit from the parent layout.
+p-popover {
+  display: none;
+}
+
 .outcome-label {
   border: none;
   background: none;
