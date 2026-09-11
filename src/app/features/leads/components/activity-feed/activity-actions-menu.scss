@@ -1,0 +1,57 @@
+:host {
+  display: contents;
+}
+
+.kebab-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  padding: 4px;
+  border: none;
+  border-radius: var(--radius-sm);
+  background: none;
+  color: var(--fg-quaternary);
+  cursor: pointer;
+
+  &:hover {
+    color: var(--fg-secondary);
+    background: var(--bg-secondary-hover);
+  }
+}
+
+.menu-panel {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-8);
+  width: 100%;
+  padding: var(--spacing-8);
+  border: none;
+  border-radius: var(--radius-sm);
+  background: none;
+  text-align: left;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  cursor: pointer;
+
+  &:hover {
+    background: var(--bg-secondary-hover);
+  }
+
+  &.destructive {
+    color: var(--fg-error-primary);
+  }
+}
+
+.menu-divider {
+  margin: var(--spacing-8) 0;
+  border: none;
+  border-top: 1px solid var(--border-secondary);
+}

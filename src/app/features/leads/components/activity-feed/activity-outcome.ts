@@ -1,4 +1,4 @@
-import { Component, input, linkedSignal } from '@angular/core';
+import { Component, input, linkedSignal, viewChild } from '@angular/core';
 import { Popover } from 'primeng/popover';
 import { ActivityOutcome, ActivityOutcomeOption } from '../../models/activity.model';
 
@@ -11,8 +11,6 @@ import { ActivityOutcome, ActivityOutcomeOption } from '../../models/activity.mo
       <button type="button" class="outcome-label" (click)="popover.toggle($event)">
         ({{ outcome.label }})
       </button>
-    } @else {
-      <button type="button" class="outcome-add" (click)="popover.toggle($event)">+ Outcome</button>
     }
 
     <p-popover #popover>
@@ -38,7 +36,13 @@ export class ActivityOutcomeComponent {
 
   protected readonly current = linkedSignal(() => this.initialOutcome());
 
+  private readonly popoverRef = viewChild.required(Popover);
+
   protected select(option: ActivityOutcomeOption): void {
     this.current.set({ label: option.label });
+  }
+
+  openPanel(anchor: HTMLElement): void {
+    this.popoverRef().show(undefined, anchor);
   }
 }
