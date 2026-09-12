@@ -1,0 +1,28 @@
+:host {
+  display: block;
+  width: 100%;
+}
+
+.pipeline-progress {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  width: 100%;
+  overflow: hidden;
+}
+
+.tick {
+  flex-shrink: 0;
+  width: 3.75px;
+  height: 10px;
+  border-radius: var(--radius-xs);
+  background: var(--fg-senary);
+
+  &.filled {
+    background: var(--fg-success-primary);
+  }
+
+  &.marker {
+    height: 19px;
+  }
+}

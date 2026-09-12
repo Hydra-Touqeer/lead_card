@@ -1,4 +1,4 @@
-import { Component, model } from '@angular/core';
+import { Component, computed, input, model } from '@angular/core';
 
 interface LeadTabItem {
   id: string;
@@ -11,7 +11,7 @@ interface LeadTabItem {
   styleUrl: './lead-tabs.scss',
   template: `
     <nav class="lead-tabs">
-      @for (tab of tabs; track tab.id) {
+      @for (tab of tabs(); track tab.id) {
         <button
           type="button"
           class="tab"
@@ -27,11 +27,12 @@ interface LeadTabItem {
 })
 export class LeadTabs {
   readonly activeTab = model<string>('activity');
+  readonly opportunitiesCount = input<number>(0);
 
-  protected readonly tabs: LeadTabItem[] = [
+  protected readonly tabs = computed<LeadTabItem[]>(() => [
     { id: 'activity', label: 'Activity', disabled: false },
     { id: 'details', label: 'Details', disabled: true },
-    { id: 'opportunities', label: 'Opportunities (2)', disabled: true },
+    { id: 'opportunities', label: `Opportunities (${this.opportunitiesCount()})`, disabled: false },
     { id: 'contacts', label: 'Contacts (50)', disabled: true },
-  ];
+  ]);
 }
