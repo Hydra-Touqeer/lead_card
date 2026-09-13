@@ -1,4 +1,5 @@
 import { ActivityGroup, ActivityPerson } from '../../models/activity.model';
+import { DEFAULT_PIPELINE_STAGES, Opportunity } from '../../models/opportunity.model';
 import { Task } from '../../models/task.model';
 import {
   LeadContact,
@@ -35,6 +36,47 @@ export const MOCK_CONTACTS: LeadContact[] = [
   { initials: 'DW', name: 'Dana Whitfield', role: 'Primary contact' },
   { initials: 'ML', name: 'Marcus Lee', role: 'AR Manager' },
   { initials: 'PN', name: 'Priya Nair', role: 'Credit Controller' },
+];
+
+export const MOCK_OPPORTUNITIES: Opportunity[] = [
+  {
+    id: 'opp-1',
+    name: 'Third Party Contingency',
+    createdLabel: 'Jul 30',
+    value: 18000,
+    service: 'Contingency',
+    opportunityAgeDays: 44,
+    stageAgeDays: 11,
+    stage: DEFAULT_PIPELINE_STAGES[0].label,
+    stageDotColor: DEFAULT_PIPELINE_STAGES[0].dotColor,
+    contacts: [{ initials: 'DW', name: 'Dana Whitfield', role: 'Primary contact' }],
+    comments: [],
+    attachments: [],
+  },
+  {
+    id: 'opp-2',
+    name: 'First Party Fit',
+    createdLabel: 'Aug 12',
+    value: 32000,
+    service: 'First Party Collections',
+    opportunityAgeDays: 21,
+    stageAgeDays: 5,
+    stage: DEFAULT_PIPELINE_STAGES[2].label,
+    stageDotColor: DEFAULT_PIPELINE_STAGES[2].dotColor,
+    contacts: [
+      { initials: 'DW', name: 'Dana Whitfield', role: 'Primary contact' },
+      { initials: 'ML', name: 'Marcus Lee', role: 'AR Manager' },
+    ],
+    comments: [
+      {
+        id: 'opp-cmt-1',
+        author: SAAD_HASAN,
+        text: 'Dana wants to see the recovery-rate breakdown before signing off.',
+        timestamp: '2d ago',
+      },
+    ],
+    attachments: [{ id: 'att-1', name: 'Proposal_FirstPartyFit.pdf' }],
+  },
 ];
 
 export const MOCK_WORKFLOWS: LeadWorkflow[] = [

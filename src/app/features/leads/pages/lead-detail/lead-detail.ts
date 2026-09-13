@@ -4,10 +4,12 @@ import { ActivityFilter } from '../../components/activity-filter/activity-filter
 import { LeadActionsToolbar } from '../../components/lead-actions-toolbar/lead-actions-toolbar';
 import { LeadIntro } from '../../components/lead-intro/lead-intro';
 import { LeadTabs } from '../../components/lead-tabs/lead-tabs';
+import { OpportunitiesPanel } from '../../components/opportunities/opportunities-panel';
 import { TaskPanel } from '../../components/task-panel/task-panel';
 import {
   MOCK_ACTIVITY_GROUPS,
   MOCK_CONTACTS,
+  MOCK_OPPORTUNITIES,
   MOCK_STATUS_BADGES,
   MOCK_TAGS,
   MOCK_TASKS,
@@ -16,7 +18,15 @@ import {
 
 @Component({
   selector: 'app-lead-detail',
-  imports: [LeadIntro, LeadTabs, ActivityFilter, ActivityFeed, LeadActionsToolbar, TaskPanel],
+  imports: [
+    LeadIntro,
+    LeadTabs,
+    ActivityFilter,
+    ActivityFeed,
+    OpportunitiesPanel,
+    LeadActionsToolbar,
+    TaskPanel,
+  ],
   styleUrl: './lead-detail.scss',
   template: `
     <div class="lead-detail" [class.panel-collapsed]="panelCollapsed()">
@@ -36,10 +46,17 @@ import {
         />
 
         <div class="middle-card">
-          <app-lead-tabs />
+          <app-lead-tabs [(activeTab)]="activeTab" [opportunitiesCount]="opportunities.length" />
           <div class="tab-content">
-            <app-activity-filter />
-            <app-activity-feed [groups]="activityGroups" />
+            @switch (activeTab()) {
+              @case ('opportunities') {
+                <app-opportunities-panel [opportunities]="opportunities" />
+              }
+              @default {
+                <app-activity-filter />
+                <app-activity-feed [groups]="activityGroups" />
+              }
+            }
           </div>
         </div>
       </div>
@@ -59,6 +76,8 @@ export class LeadDetail {
   protected readonly contacts = MOCK_CONTACTS;
   protected readonly workflows = MOCK_WORKFLOWS;
   protected readonly activityGroups = MOCK_ACTIVITY_GROUPS;
+  protected readonly opportunities = MOCK_OPPORTUNITIES;
   protected readonly tasks = MOCK_TASKS;
   protected readonly panelCollapsed = signal(false);
+  protected readonly activeTab = signal('activity');
 }

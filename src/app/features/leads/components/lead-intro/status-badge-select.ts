@@ -19,7 +19,7 @@ import { Badge } from '../../../../shared/ui/badge/badge';
 
     <p-popover #popover>
       <div class="status-panel">
-        <div class="panel-header">Change status</div>
+        <div class="panel-header">{{ panelHeader() }}</div>
         @for (option of options(); track option) {
           <button
             type="button"
@@ -38,6 +38,7 @@ export class StatusBadgeSelect {
   readonly initialLabel = input.required<string>({ alias: 'label' });
   readonly dotColor = input<string>();
   readonly options = input<string[]>([]);
+  readonly panelHeader = input<string>('Change status');
 
   protected readonly current = linkedSignal(() => this.initialLabel());
 

@@ -1,0 +1,111 @@
+:host {
+  display: block;
+}
+
+.opportunities-panel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-20);
+}
+
+.panel-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--spacing-16);
+  flex-wrap: wrap;
+}
+
+.heading-block {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1 0 0;
+  min-width: 200px;
+}
+
+.title {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.75rem;
+  color: var(--text-primary);
+}
+
+.description {
+  margin: 0;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: var(--text-secondary);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-8);
+  flex-wrap: wrap;
+}
+
+.search-field {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-8);
+  width: 180px;
+  padding: var(--spacing-8) var(--spacing-12);
+  border: 1px solid var(--border-primary);
+  border-radius: var(--radius-md);
+  background: var(--bg-primary);
+  color: var(--fg-quaternary);
+
+  input {
+    flex: 1 0 0;
+    min-width: 0;
+    border: none;
+    background: none;
+    font-size: 0.875rem;
+    font-family: inherit;
+    color: var(--text-primary);
+
+    &::placeholder {
+      color: var(--text-placeholder);
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+.add-button {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-8);
+  padding: var(--spacing-8) var(--spacing-12);
+  border: 1px solid var(--fg-brand-secondary);
+  border-radius: var(--radius-md);
+  background: none;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--fg-brand-secondary);
+  cursor: pointer;
+  white-space: nowrap;
+
+  &:hover {
+    background: var(--bg-brand-primary);
+  }
+}
+
+.opportunities-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: var(--spacing-20);
+}
+
+.empty-state {
+  grid-column: 1 / -1;
+  margin: 0;
+  padding: var(--spacing-32) 0;
+  text-align: center;
+  font-size: 0.875rem;
+  color: var(--text-tertiary);
+}
