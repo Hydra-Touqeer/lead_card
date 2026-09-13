@@ -1,6 +1,7 @@
 import { Component, input, linkedSignal, viewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import Comment01Icon from '@hugeicons/core-free-icons/Comment01Icon';
+import Delete02Icon from '@hugeicons/core-free-icons/Delete02Icon';
 import SentIcon from '@hugeicons/core-free-icons/SentIcon';
 import { Avatar } from 'primeng/avatar';
 import { Popover } from 'primeng/popover';
@@ -39,6 +40,16 @@ import { ActivityComment, ActivityPerson } from '../../models/activity.model';
                   <div class="comment-meta">
                     <span class="comment-author">{{ comment.author.name }}</span>
                     <span class="comment-time">{{ comment.timestamp }}</span>
+                    @if (comment.author.name === currentUser().name) {
+                      <button
+                        type="button"
+                        class="comment-delete"
+                        aria-label="Delete comment"
+                        (click)="removeComment(comment.id)"
+                      >
+                        <app-icon [icon]="deleteIcon" [size]="14" />
+                      </button>
+                    }
                   </div>
                   <p class="comment-text">{{ comment.text }}</p>
                 </div>
@@ -74,6 +85,7 @@ export class ActivityComments {
 
   protected readonly commentIcon = Comment01Icon;
   protected readonly sendIcon = SentIcon;
+  protected readonly deleteIcon = Delete02Icon;
 
   private readonly popoverRef = viewChild.required(Popover);
 
@@ -91,5 +103,9 @@ export class ActivityComments {
       { id: crypto.randomUUID(), author: this.currentUser(), text, timestamp: 'Just now' },
     ]);
     this.draft = '';
+  }
+
+  protected removeComment(id: string): void {
+    this.comments.update((list) => list.filter((comment) => comment.id !== id));
   }
 }

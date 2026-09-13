@@ -84,6 +84,34 @@ p-popover {
   gap: var(--spacing-8);
 }
 
+.comment-delete {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+  padding: 2px;
+  border: none;
+  border-radius: var(--radius-xs);
+  background: none;
+  color: var(--fg-quaternary);
+  cursor: pointer;
+  flex-shrink: 0;
+  opacity: 0;
+
+  &:hover {
+    color: var(--fg-error-primary);
+    background: var(--bg-error-primary);
+  }
+
+  &:focus-visible {
+    opacity: 1;
+  }
+}
+
+.comment:hover .comment-delete {
+  opacity: 1;
+}
+
 .comment-author {
   font-size: 0.875rem;
   font-weight: 600;
