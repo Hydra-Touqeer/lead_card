@@ -77,6 +77,20 @@ export const MOCK_OPPORTUNITIES: Opportunity[] = [
     ],
     attachments: [{ id: 'att-1', name: 'Proposal_FirstPartyFit.pdf' }],
   },
+  {
+    id: 'opp-3',
+    name: 'AR Automation Renewal',
+    createdLabel: 'Jun 3',
+    value: 54000,
+    service: 'AR Automation',
+    opportunityAgeDays: 67,
+    stageAgeDays: 9,
+    stage: DEFAULT_PIPELINE_STAGES[3].label,
+    stageDotColor: DEFAULT_PIPELINE_STAGES[3].dotColor,
+    contacts: [{ initials: 'PN', name: 'Priya Nair', role: 'Credit Controller' }],
+    comments: [],
+    attachments: [],
+  },
 ];
 
 export const MOCK_WORKFLOWS: LeadWorkflow[] = [
