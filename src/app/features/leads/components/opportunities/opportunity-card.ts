@@ -100,6 +100,7 @@ export class OpportunityCard {
   readonly opportunity_ = input.required<Opportunity>({ alias: 'opportunity' });
   readonly delete = output<void>();
   readonly view = output<void>();
+  readonly edit = output<void>();
 
   protected readonly currentUser = CURRENT_USER;
   protected readonly stageLabels = DEFAULT_PIPELINE_STAGES.map((stage) => stage.label);
@@ -119,6 +120,6 @@ export class OpportunityCard {
   }
 
   protected onEdit(): void {
-    // TODO: open the opportunity edit form once it exists.
+    this.edit.emit();
   }
 }

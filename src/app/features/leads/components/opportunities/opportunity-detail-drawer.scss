@@ -1,0 +1,197 @@
+:host {
+  display: contents;
+}
+
+// PrimeNG's own theme padding for these regions is generous (modal-sized);
+// override it directly so the header/footer stay compact and only the
+// content region (already flex-grow + overflow-y: auto from the component's
+// base styles) scrolls.
+:host ::ng-deep {
+  .p-drawer-header {
+    padding: var(--spacing-12) var(--spacing-16);
+    border-bottom: 1px solid var(--border-secondary);
+  }
+
+  .p-drawer-content {
+    padding: var(--spacing-16);
+  }
+}
+
+.drawer-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-8);
+  width: 100%;
+}
+
+.drawer-title {
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-8);
+}
+
+p-popover {
+  display: none;
+}
+
+.kebab-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border: none;
+  border-radius: var(--radius-sm);
+  background: none;
+  color: var(--fg-quaternary);
+  cursor: pointer;
+
+  &:hover {
+    color: var(--fg-secondary);
+    background: var(--bg-secondary-hover);
+  }
+}
+
+.menu-panel {
+  display: flex;
+  flex-direction: column;
+  width: 180px;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-8);
+  width: 100%;
+  padding: var(--spacing-8);
+  border: none;
+  border-radius: var(--radius-sm);
+  background: none;
+  text-align: left;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  cursor: pointer;
+
+  &:hover {
+    background: var(--bg-secondary-hover);
+  }
+
+  &.destructive {
+    color: var(--fg-error-primary);
+  }
+}
+
+.close-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border: none;
+  border-radius: var(--radius-md);
+  background: none;
+  color: var(--fg-quaternary);
+  cursor: pointer;
+
+  &:hover {
+    color: var(--fg-secondary);
+    background: var(--bg-secondary-hover);
+  }
+}
+
+.drawer-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-12);
+}
+
+.name-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--spacing-8);
+}
+
+.name {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.value {
+  margin: 0;
+  flex-shrink: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.stage-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-8);
+}
+
+.stage-label {
+  font-size: 0.75rem;
+  color: var(--text-tertiary);
+}
+
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-12);
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.stat-label {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--text-quaternary);
+}
+
+.stat-value {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.description {
+  margin: 0;
+  font-size: 0.875rem;
+  line-height: 1.3125rem;
+  color: var(--text-secondary);
+}
+
+.divider {
+  height: 1px;
+  background: var(--border-secondary);
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-8);
+}
+
+.section-title {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
