@@ -10,6 +10,8 @@ import {
   MOCK_ACTIVITY_GROUPS,
   MOCK_CONTACTS,
   MOCK_OPPORTUNITIES,
+  MOCK_OPPORTUNITY_CONTACTS,
+  MOCK_OWNER_OPTIONS,
   MOCK_STATUS_BADGES,
   MOCK_TAGS,
   MOCK_TASKS,
@@ -50,7 +52,13 @@ import {
           <div class="tab-content">
             @switch (activeTab()) {
               @case ('opportunities') {
-                <app-opportunities-panel [opportunities]="opportunities" />
+                <app-opportunities-panel
+                  [opportunities]="opportunities"
+                  [contactOptions]="opportunityContacts"
+                  [ownerOptions]="ownerOptions"
+                  [activities]="allActivities"
+                  (viewActivity)="onViewActivity($event)"
+                />
               }
               @default {
                 <app-activity-filter />
@@ -77,7 +85,18 @@ export class LeadDetail {
   protected readonly workflows = MOCK_WORKFLOWS;
   protected readonly activityGroups = MOCK_ACTIVITY_GROUPS;
   protected readonly opportunities = MOCK_OPPORTUNITIES;
+  protected readonly opportunityContacts = MOCK_OPPORTUNITY_CONTACTS;
+  protected readonly ownerOptions = MOCK_OWNER_OPTIONS;
   protected readonly tasks = MOCK_TASKS;
   protected readonly panelCollapsed = signal(false);
   protected readonly activeTab = signal('activity');
+
+  protected readonly allActivities = this.activityGroups.flatMap((group) => group.items);
+
+  protected onViewActivity(activityId: string): void {
+    this.activeTab.set('activity');
+    setTimeout(() => {
+      document.getElementById(`activity-${activityId}`)?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+  }
 }

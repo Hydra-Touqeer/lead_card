@@ -64,7 +64,7 @@
 }
 
 .title {
-  font-size: 14px;
+  font-size: 1rem;
   line-height: 20px;
   font-weight: 500;
   color: var(--text-secondary);
@@ -90,7 +90,7 @@
 }
 
 .timestamp {
-  font-size: 12px;
+  font-size: 0.875rem;
   line-height: 18px;
   color: var(--text-tertiary);
   white-space: nowrap;
@@ -98,7 +98,7 @@
 }
 
 .copied-badge {
-  font-size: 12px;
+  font-size: 0.875rem;
   line-height: 18px;
   color: var(--fg-success-primary);
   white-space: nowrap;
@@ -114,7 +114,7 @@
 .description,
 .meta-line {
   margin: 0;
-  font-size: 14px;
+  font-size: 1rem;
   line-height: 20px;
   color: var(--text-tertiary);
 }

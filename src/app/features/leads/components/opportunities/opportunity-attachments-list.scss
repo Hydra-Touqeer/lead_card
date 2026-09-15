@@ -1,0 +1,138 @@
+:host {
+  display: contents;
+}
+
+p-popover {
+  display: none;
+}
+
+.section-title {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.empty-state {
+  margin: 0;
+  font-size: 0.75rem;
+  color: var(--text-tertiary);
+}
+
+.attachment-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+}
+
+.attachment-row {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-8);
+  padding: var(--spacing-6);
+  border: none;
+  border-radius: var(--radius-md);
+  background: none;
+  text-align: left;
+  cursor: pointer;
+  width: 100%;
+
+  &:hover {
+    background: var(--bg-secondary-hover);
+  }
+}
+
+.attachment-text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.attachment-name {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.attachment-meta {
+  font-size: 0.75rem;
+  color: var(--text-tertiary);
+}
+
+.kebab-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-left: auto;
+  width: 24px;
+  height: 24px;
+  border: none;
+  border-radius: var(--radius-sm);
+  background: none;
+  color: var(--fg-quaternary);
+  cursor: pointer;
+
+  &:hover {
+    color: var(--fg-secondary);
+    background: var(--bg-secondary-hover);
+  }
+}
+
+.upload-dropzone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-4);
+  padding: var(--spacing-16);
+  border: 1px dashed var(--border-secondary);
+  border-radius: var(--radius-lg);
+  color: var(--text-tertiary);
+  font-size: 0.875rem;
+  text-align: center;
+  cursor: pointer;
+
+  &:hover {
+    background: var(--bg-secondary-hover);
+  }
+
+  strong {
+    color: var(--fg-brand-secondary);
+    font-weight: 500;
+  }
+
+  .hint {
+    font-size: 0.75rem;
+    color: var(--text-quaternary);
+  }
+}
+
+.menu-panel {
+  display: flex;
+  flex-direction: column;
+  width: 140px;
+}
+
+.menu-item {
+  display: block;
+  width: 100%;
+  padding: var(--spacing-8);
+  border: none;
+  border-radius: var(--radius-sm);
+  background: none;
+  text-align: left;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  cursor: pointer;
+
+  &:hover {
+    background: var(--bg-secondary-hover);
+  }
+
+  &.destructive {
+    color: var(--fg-error-primary);
+  }
+}

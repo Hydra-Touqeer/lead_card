@@ -1,0 +1,121 @@
+:host {
+  display: contents;
+}
+
+p-popover {
+  display: none;
+}
+
+.section-title {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.empty-state {
+  margin: 0;
+  font-size: 0.75rem;
+  color: var(--text-tertiary);
+}
+
+.activity-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+}
+
+.activity-row {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-8);
+  padding: var(--spacing-6);
+  border-radius: var(--radius-md);
+
+  &:hover {
+    background: var(--bg-secondary-hover);
+  }
+}
+
+.type-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  border-radius: var(--radius-md);
+}
+
+.activity-text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  flex: 1 0 0;
+}
+
+.activity-title {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.activity-subtitle {
+  font-size: 0.875rem;
+  color: var(--text-tertiary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.activity-timestamp {
+  flex-shrink: 0;
+  font-size: 0.75rem;
+  color: var(--text-quaternary);
+  white-space: nowrap;
+}
+
+.kebab-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  border: none;
+  border-radius: var(--radius-sm);
+  background: none;
+  color: var(--fg-quaternary);
+  cursor: pointer;
+
+  &:hover {
+    color: var(--fg-secondary);
+    background: var(--bg-primary);
+  }
+}
+
+.menu-panel {
+  display: flex;
+  flex-direction: column;
+  width: 170px;
+}
+
+.menu-item {
+  display: block;
+  width: 100%;
+  padding: var(--spacing-8);
+  border: none;
+  border-radius: var(--radius-sm);
+  background: none;
+  text-align: left;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  cursor: pointer;
+
+  &:hover {
+    background: var(--bg-secondary-hover);
+  }
+}

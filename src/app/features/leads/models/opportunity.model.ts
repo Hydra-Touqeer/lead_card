@@ -4,12 +4,42 @@ export interface OpportunityContact {
   initials: string;
   name: string;
   role: string;
+  email?: string;
+  phone?: string;
 }
 
 export interface OpportunityAttachment {
   id: string;
   name: string;
+  sizeLabel?: string;
+  sentLabel?: string;
 }
+
+export interface OpportunityCustomFieldValue {
+  id: string;
+  label: string;
+  value: string;
+}
+
+export interface OpportunityCustomFieldDefinition {
+  id: string;
+  label: string;
+}
+
+/**
+ * Flat, mocked for now - will come from the (not yet built) Settings >
+ * Custom Fields screens. This is the catalog offered when adding a field to
+ * an opportunity; `Opportunity.customFields` holds the ones actually set.
+ */
+export const MOCK_CUSTOM_FIELD_CATALOG: OpportunityCustomFieldDefinition[] = [
+  { id: 'placement-value', label: 'Placement Value' },
+  { id: 'commission-rate', label: 'Commission Rate' },
+  { id: 'contract-type', label: 'Contract Type' },
+  { id: 'debtors', label: 'Debtors' },
+  { id: 'expected-close', label: 'Expected Close' },
+  { id: 'source', label: 'Source' },
+  { id: 'activation-fee', label: 'Activation Fee' },
+];
 
 export interface Opportunity {
   id: string;
@@ -21,9 +51,13 @@ export interface Opportunity {
   stageAgeDays: number;
   stage: string;
   stageDotColor: string;
+  expectedCloseDate: Date;
+  description: string;
   contacts: OpportunityContact[];
+  owner: OpportunityContact;
   comments: ActivityComment[];
   attachments: OpportunityAttachment[];
+  customFields: OpportunityCustomFieldValue[];
 }
 
 /**

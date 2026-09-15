@@ -1,5 +1,5 @@
 import { ActivityGroup, ActivityPerson } from '../../models/activity.model';
-import { DEFAULT_PIPELINE_STAGES, Opportunity } from '../../models/opportunity.model';
+import { DEFAULT_PIPELINE_STAGES, Opportunity, OpportunityContact } from '../../models/opportunity.model';
 import { Task } from '../../models/task.model';
 import {
   LeadContact,
@@ -38,6 +38,49 @@ export const MOCK_CONTACTS: LeadContact[] = [
   { initials: 'PN', name: 'Priya Nair', role: 'Credit Controller' },
 ];
 
+const DANA_WHITFIELD: OpportunityContact = {
+  initials: 'DW',
+  name: 'Dana Whitfield',
+  role: 'CFO · Primary',
+  email: 'dana.whitfield@kestrelmfg.com',
+  phone: '+1 (555) 010-2938',
+};
+
+const MARCUS_LEE: OpportunityContact = {
+  initials: 'ML',
+  name: 'Marcus Lee',
+  role: 'AR Manager',
+  email: 'marcus.lee@kestrelmfg.com',
+  phone: '+1 (555) 010-4471',
+};
+
+const PRIYA_NAIR: OpportunityContact = {
+  initials: 'PN',
+  name: 'Priya Nair',
+  role: 'Credit Controller',
+  email: 'priya.nair@kestrelmfg.com',
+  phone: '+1 (555) 010-5820',
+};
+
+export const MOCK_OPPORTUNITY_CONTACTS: OpportunityContact[] = [DANA_WHITFIELD, MARCUS_LEE, PRIYA_NAIR];
+
+export const MOCK_OWNER_OPTIONS: OpportunityContact[] = [
+  {
+    initials: 'SA',
+    name: 'Stanley Adeyemi',
+    role: 'Sales Agent',
+    email: 'stanley.adeyemi@collectware.com',
+    phone: '+1 (555) 019-3010',
+  },
+  {
+    initials: 'MT',
+    name: 'Muhammad Touqeer',
+    role: 'Collector',
+    email: 'mtouqeer@itpath.io',
+    phone: '+1 (555) 019-4477',
+  },
+];
+
 export const MOCK_OPPORTUNITIES: Opportunity[] = [
   {
     id: 'opp-1',
@@ -49,9 +92,26 @@ export const MOCK_OPPORTUNITIES: Opportunity[] = [
     stageAgeDays: 11,
     stage: DEFAULT_PIPELINE_STAGES[0].label,
     stageDotColor: DEFAULT_PIPELINE_STAGES[0].dotColor,
-    contacts: [{ initials: 'DW', name: 'Dana Whitfield', role: 'Primary contact' }],
+    expectedCloseDate: new Date('2027-05-15'),
+    description: '~$82K commercial AR across 14 debtors. Contingency placement for 90+ day accounts.',
+    contacts: [DANA_WHITFIELD],
+    owner: MOCK_OWNER_OPTIONS[0],
     comments: [],
-    attachments: [],
+    attachments: [
+      { id: 'att-1', name: 'Contingency_Proposal_v1.pdf', sizeLabel: '240 KB', sentLabel: 'sent 31m ago' },
+      { id: 'att-2', name: 'Rate_Schedule.xlsx', sizeLabel: '88 KB' },
+      { id: 'att-3', name: 'Kestrel_AR_Aging.xlsx', sizeLabel: '240 KB', sentLabel: 'sent 31m ago' },
+      { id: 'att-4', name: 'Contingency_Proposal_v2.pdf', sizeLabel: '240 KB' },
+    ],
+    customFields: [
+      { id: 'cf-1', label: 'Placement Value', value: '$18,000' },
+      { id: 'cf-2', label: 'Commission Rate', value: '22% · 90+ days' },
+      { id: 'cf-3', label: 'Contract Type', value: 'Contingency' },
+      { id: 'cf-4', label: 'Debtors', value: '14 files' },
+      { id: 'cf-5', label: 'Expected Close', value: 'Aug 31, 2026' },
+      { id: 'cf-6', label: 'Source', value: 'Inbound · Website' },
+      { id: 'cf-7', label: 'Activation Fee', value: '$750' },
+    ],
   },
   {
     id: 'opp-2',
@@ -63,10 +123,10 @@ export const MOCK_OPPORTUNITIES: Opportunity[] = [
     stageAgeDays: 5,
     stage: DEFAULT_PIPELINE_STAGES[2].label,
     stageDotColor: DEFAULT_PIPELINE_STAGES[2].dotColor,
-    contacts: [
-      { initials: 'DW', name: 'Dana Whitfield', role: 'Primary contact' },
-      { initials: 'ML', name: 'Marcus Lee', role: 'AR Manager' },
-    ],
+    expectedCloseDate: new Date('2027-03-01'),
+    description: 'Early-stage, high-volume receivables. Evaluating a first-party collections program.',
+    contacts: [DANA_WHITFIELD, MARCUS_LEE],
+    owner: MOCK_OWNER_OPTIONS[1],
     comments: [
       {
         id: 'opp-cmt-1',
@@ -75,7 +135,10 @@ export const MOCK_OPPORTUNITIES: Opportunity[] = [
         timestamp: '2d ago',
       },
     ],
-    attachments: [{ id: 'att-1', name: 'Proposal_FirstPartyFit.pdf' }],
+    attachments: [
+      { id: 'att-5', name: 'Proposal_FirstPartyFit.pdf', sizeLabel: '212 KB', sentLabel: 'sent 2d ago' },
+    ],
+    customFields: [{ id: 'cf-8', label: 'Source', value: 'Inbound · Website' }],
   },
   {
     id: 'opp-3',
@@ -87,9 +150,13 @@ export const MOCK_OPPORTUNITIES: Opportunity[] = [
     stageAgeDays: 9,
     stage: DEFAULT_PIPELINE_STAGES[3].label,
     stageDotColor: DEFAULT_PIPELINE_STAGES[3].dotColor,
-    contacts: [{ initials: 'PN', name: 'Priya Nair', role: 'Credit Controller' }],
+    expectedCloseDate: new Date('2026-12-20'),
+    description: 'Renewing the automated AR reminders workflow for another 12-month term.',
+    contacts: [PRIYA_NAIR],
+    owner: MOCK_OWNER_OPTIONS[0],
     comments: [],
     attachments: [],
+    customFields: [],
   },
 ];
 
